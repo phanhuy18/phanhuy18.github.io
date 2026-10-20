@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Huy Phan: Information Science student at CU Boulder. Data analysis and backend development portfolio.">
+<style>body{margin:0}</style>
+<title>Huy Phan</title>
+<style>
+/* Layout: one centered column, plain sections, one accent color. */
+:root{
+  --bg:#FFFFFF;
+  --surface:#F5F7FA;
+  --text:#1D2433;
+  --muted:#5B6474;
+  --border:#E1E5EB;
+  --accent:#1F5FBF;
+  --accent-soft:#E8F0FB;
+  --code-bg:#F3F5F8;
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--bg:#12161D;--surface:#1A2029;--text:#E4E8EE;--muted:#9BA4B2;--border:#2A323D;--accent:#6FA3F0;--accent-soft:#1D2B40;--code-bg:#1A2029;color-scheme:dark}
+}
+:root[data-theme="dark"]{--bg:#12161D;--surface:#1A2029;--text:#E4E8EE;--muted:#9BA4B2;--border:#2A323D;--accent:#6FA3F0;--accent-soft:#1D2B40;--code-bg:#1A2029;color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:16px;line-height:1.6}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
+.wrap{max-width:860px;margin:0 auto;padding-inline:20px;padding-block:0 48px}
+h1,h2,h3{line-height:1.25;margin:0;text-wrap:balance}
+h2{font-size:24px;margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+h3{font-size:18px}
+p{margin:0 0 14px}
+section{padding-top:56px}
+
+header.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding-block:20px;border-bottom:1px solid var(--border)}
+header.top .brand{font-weight:700;color:var(--text)}
+header.top nav{display:flex;gap:20px;flex-wrap:wrap;font-size:15px}
+header.top nav a{color:var(--muted)}
+header.top nav a:hover{color:var(--accent);text-decoration:none}
+
+.intro{padding-top:48px}
+.intro h1{font-size:clamp(32px,6vw,42px)}
+.intro .role{font-size:18px;color:var(--muted);margin:6px 0 18px}
+.intro p{max-width:62ch}
+.buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.btn{display:inline-block;padding:10px 16px;border-radius:6px;font-size:15px;font-weight:600;border:1px solid var(--accent);background:var(--accent);color:var(--bg)}
+.btn:hover{text-decoration:none;opacity:.9}
+.btn.secondary{background:transparent;color:var(--accent)}
+
+.tags{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0;margin:0 0 18px}
+.tags li{font-size:13px;padding:3px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.project-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px 16px;flex-wrap:wrap;margin-bottom:8px}
+.project-head a{font-size:15px}
+.sub{color:var(--muted);font-size:14px;margin-bottom:14px}
+.findings{margin:0 0 24px;padding-left:20px}
+.findings li{margin-bottom:6px}
+.charts{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px}
+.chart{margin:0;border:1px solid var(--border);border-radius:8px;padding:16px;min-width:0}
+.chart figcaption{font-weight:600;font-size:15px;margin-bottom:2px}
+.chart .note{font-size:13px;color:var(--muted);margin-bottom:10px}
+.chart svg{width:100%;height:auto;display:block}
+.gl{stroke:var(--border);stroke-width:1}
+.ax{fill:var(--muted);font-size:17px;font-family:var(--font)}
+.cat{fill:var(--text);font-size:19px;font-family:var(--font)}
+.lab{fill:var(--text);font-size:18px;font-weight:600;font-family:var(--font)}
+.ln{fill:none;stroke:var(--accent);stroke-width:3.5;stroke-linejoin:round}
+.area{fill:var(--accent);opacity:.1}
+.pt{fill:var(--accent)}
+.bar{fill:var(--accent);opacity:.45}
+.bar.hi{opacity:1}
+
+h3.small{font-size:16px;margin:28px 0 10px}
+.method{padding-left:20px;margin:0}
+.method li{margin-bottom:6px}
+code{font-family:var(--mono);font-size:.9em;background:var(--code-bg);padding:1px 5px;border-radius:4px}
+details{border:1px solid var(--border);border-radius:8px;margin-bottom:10px;background:var(--bg)}
+details[open]{background:var(--surface)}
+summary{cursor:pointer;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;padding:12px 14px;font-weight:600}
+summary .qid{font-family:var(--mono);font-size:13px;color:var(--accent)}
+summary .qtitle{flex:1 1 240px}
+summary .qtag{font-family:var(--mono);font-size:12px;font-weight:400;color:var(--muted)}
+details pre{margin:0 14px 12px;padding:14px;background:var(--bg);border:1px solid var(--border);border-radius:6px;overflow-x:auto;font-size:13px;line-height:1.55}
+details pre code{background:none;padding:0;font-size:inherit}
+.t-k{color:var(--accent);font-weight:600} .t-f{color:#B5487A} .t-s,.t-n{color:#2E7D5B} .t-c{color:var(--muted)}
+.tbl{overflow-x:auto;margin:0 14px 14px}
+table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:6px 10px;border-bottom:1px solid var(--border);white-space:nowrap}
+th{font-weight:600;color:var(--muted);font-size:13px}
+.num{text-align:right}
+.source{font-size:15px;color:var(--muted);overflow-wrap:anywhere}
+.limits{padding-left:20px;color:var(--muted);font-size:15px;margin:0}
+
+.item{display:grid;grid-template-columns:180px minmax(0,1fr);gap:4px 20px;padding-block:14px;border-bottom:1px solid var(--border)}
+.item:last-child{border-bottom:none}
+.item .date{color:var(--muted);font-size:14px;padding-top:2px}
+.item h3{font-size:16px}
+.item .org{color:var(--muted);font-size:15px;margin-bottom:6px}
+.item ul{margin:0;padding-left:18px}
+.item li{margin-bottom:4px}
+.item p{margin:0}
+h3.group{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:24px 0 4px}
+.skills{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.skills b{display:block;font-size:14px;margin-bottom:4px}
+.skills p{margin:0;color:var(--muted);font-size:15px}
+
+.contact p{max-width:60ch}
+.contact-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.email{font-family:var(--mono);font-size:15px;padding:9px 12px;border:1px solid var(--border);border-radius:6px;user-select:all}
+button.btn{font-family:var(--font);cursor:pointer}
+.toast{font-size:14px;color:var(--muted);min-height:1.4em;margin-top:8px}
+footer{margin-top:56px;padding-top:16px;border-top:1px solid var(--border);font-size:14px;color:var(--muted);display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+
+@media (max-width:700px){
+  .charts{grid-template-columns:1fr}
+  .item{grid-template-columns:1fr}
+  .skills{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="#">Huy Phan</a>
+    <nav aria-label="Primary"><a href="#project">Project</a><a href="#resume">Resume</a><a href="#contact">Contact</a></nav>
+  </header>
+
+  <div class="intro">
+    <h1>Huy Phan</h1>
+    <p class="role">Information Science student at CU Boulder · Data analysis &amp; backend development</p>
+    <p>I’m finishing a B.S. in Information Science with a minor in Business (expected 2027), with two IBM internships behind me. I like working with real data: cleaning it, querying it with SQL, and explaining what it shows. I’m looking for data analyst, backend, and UX research internships and entry-level roles.</p>
+    <div class="buttons">
+      <a class="btn" href="Huy_Phan_Resume.pdf" target="_blank" rel="noopener">View resume (PDF)</a>
+      <a class="btn secondary" href="https://github.com/phanhuy18" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn secondary" href="https://linkedin.com/in/huyphan" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+
+  <section id="project">
+    <h2>Project</h2>
+    <div class="project-head">
+      <h3>Used Motorcycle Depreciation Analysis (SQL)</h3>
+      <a href="https://github.com/phanhuy18/bike-depreciation-sql" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <ul class="tags"><li>PostgreSQL</li><li>SQL</li><li>Data cleaning</li><li>Data analysis</li></ul>
+    <p>I loaded a <a href="https://www.kaggle.com/datasets/nehalbirla/motorcycle-dataset" target="_blank" rel="noopener">public Kaggle dataset</a> of 1,061 used-motorcycle listings from India into PostgreSQL to answer one question: <strong>how fast does a used motorcycle lose its value?</strong> I measured value as the asking price divided by the bike’s new price (I call this “retention”), then wrote five queries to compare it by age, brand, number of owners, and mileage. 626 listings include the new price, so those are used for the retention numbers.</p>
+
+    <h3 class="small">Key findings</h3>
+    <ul class="findings">
+      <li>Bikes keep about <strong>97%</strong> of their new price after 1 year, <strong>77%</strong> after 3 years, and <strong>42%</strong> after 10 years. The biggest drop happens in the first few years.</li>
+      <li>Comparing bikes from 2015–2018, <strong>Royal Enfield</strong> holds value best at <strong>84%</strong>. Most other brands are between 71% and 74%.</li>
+      <li>For the same model years, second-owner bikes keep <strong>62%</strong> vs. <strong>68%</strong> for first-owner bikes, about 6 points less.</li>
+    </ul>
+
+    <div class="charts">
+      <figure class="chart">
+        <figcaption>Average value kept by age</figcaption>
+        <div class="note">Asking price ÷ new price · model years 2010–2019</div>
+        <svg viewBox="0 0 560 330" role="img" aria-label="Average value kept by age: 97% at 1 year down to 42% at 10 years.">
+<line x1="58" x2="540" y1="278.0" y2="278.0" class="gl"/><text x="48" y="284.0" class="ax" text-anchor="end">0%</text><line x1="58" x2="540" y1="214.0" y2="214.0" class="gl"/><text x="48" y="220.0" class="ax" text-anchor="end">25%</text><line x1="58" x2="540" y1="150.0" y2="150.0" class="gl"/><text x="48" y="156.0" class="ax" text-anchor="end">50%</text><line x1="58" x2="540" y1="86.0" y2="86.0" class="gl"/><text x="48" y="92.0" class="ax" text-anchor="end">75%</text><line x1="58" x2="540" y1="22.0" y2="22.0" class="gl"/><text x="48" y="28.0" class="ax" text-anchor="end">100%</text><text x="58.0" y="302" class="ax" text-anchor="middle">1</text><text x="111.6" y="302" class="ax" text-anchor="middle">2</text><text x="165.1" y="302" class="ax" text-anchor="middle">3</text><text x="218.7" y="302" class="ax" text-anchor="middle">4</text><text x="272.2" y="302" class="ax" text-anchor="middle">5</text><text x="325.8" y="302" class="ax" text-anchor="middle">6</text><text x="379.3" y="302" class="ax" text-anchor="middle">7</text><text x="432.9" y="302" class="ax" text-anchor="middle">8</text><text x="486.4" y="302" class="ax" text-anchor="middle">9</text><text x="540.0" y="302" class="ax" text-anchor="middle">10</text><text x="299.0" y="328" class="ax" text-anchor="middle">Age (years)</text>
+<path d="M58.0,29.7 L111.6,57.8 L165.1,80.9 L218.7,109.0 L272.2,114.2 L325.8,121.8 L379.3,142.3 L432.9,157.7 L486.4,173.0 L540.0,170.5 L540.0,278.0 L58.0,278.0 Z" class="area"/><path d="M58.0,29.7 L111.6,57.8 L165.1,80.9 L218.7,109.0 L272.2,114.2 L325.8,121.8 L379.3,142.3 L432.9,157.7 L486.4,173.0 L540.0,170.5" class="ln"/><circle cx="58.0" cy="29.7" r="5" class="pt"><title>Age 1: 97% (48 bikes)</title></circle><circle cx="111.6" cy="57.8" r="5" class="pt"><title>Age 2: 86% (77 bikes)</title></circle><circle cx="165.1" cy="80.9" r="5" class="pt"><title>Age 3: 77% (85 bikes)</title></circle><circle cx="218.7" cy="109.0" r="5" class="pt"><title>Age 4: 66% (84 bikes)</title></circle><circle cx="272.2" cy="114.2" r="5" class="pt"><title>Age 5: 64% (80 bikes)</title></circle><circle cx="325.8" cy="121.8" r="5" class="pt"><title>Age 6: 61% (66 bikes)</title></circle><circle cx="379.3" cy="142.3" r="5" class="pt"><title>Age 7: 53% (53 bikes)</title></circle><circle cx="432.9" cy="157.7" r="5" class="pt"><title>Age 8: 47% (37 bikes)</title></circle><circle cx="486.4" cy="173.0" r="5" class="pt"><title>Age 9: 41% (33 bikes)</title></circle><circle cx="540.0" cy="170.5" r="5" class="pt"><title>Age 10: 42% (28 bikes)</title></circle>
+<text x="68.0" y="25.7" class="lab">97%</text>
+<text x="536.0" y="158.5" class="lab" text-anchor="end">42%</text>
+</svg>
+      </figure>
+      <figure class="chart">
+        <figcaption>Average value kept by brand</figcaption>
+        <div class="note">Bikes from 2015–2018 · brands with 10+ listings</div>
+        <svg viewBox="0 0 560 320" role="img" aria-label="Average value kept by brand for 2015 to 2018 bikes. Royal Enfield highest at 84%.">
+<line x1="150.0" x2="150.0" y1="6" y2="290" class="gl"/><text x="150.0" y="312" class="ax" text-anchor="middle">0%</text><line x1="236.5" x2="236.5" y1="6" y2="290" class="gl"/><text x="236.5" y="312" class="ax" text-anchor="middle">25%</text><line x1="323.0" x2="323.0" y1="6" y2="290" class="gl"/><text x="323.0" y="312" class="ax" text-anchor="middle">50%</text><line x1="409.5" x2="409.5" y1="6" y2="290" class="gl"/><text x="409.5" y="312" class="ax" text-anchor="middle">75%</text><line x1="496.0" x2="496.0" y1="6" y2="290" class="gl"/><text x="496.0" y="312" class="ax" text-anchor="middle">100%</text><text x="140" y="32" class="cat" text-anchor="end">Royal Enfield</text><rect x="150" y="12" width="290.6" height="26" rx="3" class="bar hi"><title>Royal Enfield: 84% (28 bikes)</title></rect><text x="448.6" y="32" class="lab">84%</text><text x="140" y="78" class="cat" text-anchor="end">Yamaha</text><rect x="150" y="58" width="256.0" height="26" rx="3" class="bar"><title>Yamaha: 74% (50 bikes)</title></rect><text x="414.0" y="78" class="lab">74%</text><text x="140" y="124" class="cat" text-anchor="end">Bajaj</text><rect x="150" y="104" width="252.6" height="26" rx="3" class="bar"><title>Bajaj: 73% (66 bikes)</title></rect><text x="410.6" y="124" class="lab">73%</text><text x="140" y="170" class="cat" text-anchor="end">Honda</text><rect x="150" y="150" width="249.1" height="26" rx="3" class="bar"><title>Honda: 72% (90 bikes)</title></rect><text x="407.1" y="170" class="lab">72%</text><text x="140" y="216" class="cat" text-anchor="end">Hero</text><rect x="150" y="196" width="245.7" height="26" rx="3" class="bar"><title>Hero: 71% (58 bikes)</title></rect><text x="403.7" y="216" class="lab">71%</text><text x="140" y="262" class="cat" text-anchor="end">TVS</text><rect x="150" y="242" width="231.8" height="26" rx="3" class="bar"><title>TVS: 67% (10 bikes)</title></rect><text x="389.8" y="262" class="lab">67%</text></svg>
+      </figure>
+    </div>
+
+    <h3 class="small">How I did it</h3>
+    <ol class="method">
+      <li>Loaded the CSV into a PostgreSQL table using <code>\copy</code>.</li>
+      <li>Created a clean <code>listings</code> table, pulled the brand out of each model name, and added a primary key and indexes.</li>
+      <li>Calculated retention as <code>selling_price / ex_showroom_price</code> and age as <code>2020 - year</code>.</li>
+      <li>Wrote five queries using <code>WHERE</code>, <code>GROUP BY</code>, <code>HAVING</code>, <code>CASE</code>, and <code>AVG</code>. When comparing groups, I kept the model years the same so one group wasn’t just older.</li>
+    </ol>
+
+    <h3 class="small">Queries and results</h3>
+    <details>
+<summary><span class="qid">Q1</span><span class="qtitle">How much value does a bike keep at each age?</span><span class="qtag">GROUP BY, AVG</span></summary>
+<pre><code><span class="t-k">SELECT</span>
+    <span class="t-n">2020</span> - year                                       <span class="t-k">AS</span> age_years,
+    <span class="t-f">COUNT</span>(*)                                          <span class="t-k">AS</span> listings,
+    <span class="t-f">ROUND</span>(<span class="t-f">AVG</span>(selling_price / ex_showroom_price), <span class="t-n">2</span>)  <span class="t-k">AS</span> avg_retention
+<span class="t-k">FROM</span> listings
+<span class="t-k">WHERE</span> ex_showroom_price <span class="t-k">IS NOT NULL</span>
+  <span class="t-k">AND</span> year <span class="t-k">BETWEEN</span> <span class="t-n">2010</span> <span class="t-k">AND</span> <span class="t-n">2019</span>
+<span class="t-k">GROUP BY</span> age_years
+<span class="t-k">ORDER BY</span> age_years;</code></pre>
+<div class="tbl"><table><thead><tr><th>age_years</th><th class=num>listings</th><th>avg_retention</th></tr></thead><tbody><tr><td>1</td><td class=num>48</td><td>0.97</td></tr><tr><td>2</td><td class=num>77</td><td>0.86</td></tr><tr><td>3</td><td class=num>85</td><td>0.77</td></tr><tr><td>4</td><td class=num>84</td><td>0.66</td></tr><tr><td>5</td><td class=num>80</td><td>0.64</td></tr><tr><td>6</td><td class=num>66</td><td>0.61</td></tr><tr><td>7</td><td class=num>53</td><td>0.53</td></tr><tr><td>8</td><td class=num>37</td><td>0.47</td></tr><tr><td>9</td><td class=num>33</td><td>0.41</td></tr><tr><td>10</td><td class=num>28</td><td>0.42</td></tr></tbody></table></div>
+</details><details>
+<summary><span class="qid">Q2</span><span class="qtitle">Which brands hold their value best?</span><span class="qtag">WHERE … BETWEEN, GROUP BY, HAVING</span></summary>
+<pre><code><span class="t-k">SELECT</span>
+    brand,
+    <span class="t-f">COUNT</span>(*)                                          <span class="t-k">AS</span> listings,
+    <span class="t-f">ROUND</span>(<span class="t-f">AVG</span>(selling_price / ex_showroom_price), <span class="t-n">2</span>)  <span class="t-k">AS</span> avg_retention
+<span class="t-k">FROM</span> listings
+<span class="t-k">WHERE</span> ex_showroom_price <span class="t-k">IS NOT NULL</span>
+  <span class="t-k">AND</span> year <span class="t-k">BETWEEN</span> <span class="t-n">2015</span> <span class="t-k">AND</span> <span class="t-n">2018</span>
+<span class="t-k">GROUP BY</span> brand
+<span class="t-k">HAVING</span> <span class="t-f">COUNT</span>(*) &gt;= <span class="t-n">10</span>
+<span class="t-k">ORDER BY</span> avg_retention <span class="t-k">DESC</span>;</code></pre>
+<div class="tbl"><table><thead><tr><th>brand</th><th class=num>listings</th><th>avg_retention</th></tr></thead><tbody><tr><td>Royal Enfield</td><td class=num>28</td><td>0.84</td></tr><tr><td>Yamaha</td><td class=num>50</td><td>0.74</td></tr><tr><td>Bajaj</td><td class=num>66</td><td>0.73</td></tr><tr><td>Honda</td><td class=num>90</td><td>0.72</td></tr><tr><td>Hero</td><td class=num>58</td><td>0.71</td></tr><tr><td>TVS</td><td class=num>10</td><td>0.67</td></tr></tbody></table></div>
+</details><details>
+<summary><span class="qid">Q3</span><span class="qtitle">Does a second owner lower the price?</span><span class="qtag">WHERE … IN, GROUP BY</span></summary>
+<pre><code><span class="t-k">SELECT</span>
+    owner_label,
+    <span class="t-f">COUNT</span>(*)                                          <span class="t-k">AS</span> listings,
+    <span class="t-f">ROUND</span>(<span class="t-f">AVG</span>(selling_price / ex_showroom_price), <span class="t-n">2</span>)  <span class="t-k">AS</span> avg_retention
+<span class="t-k">FROM</span> listings
+<span class="t-k">WHERE</span> ex_showroom_price <span class="t-k">IS NOT NULL</span>
+  <span class="t-k">AND</span> year <span class="t-k">BETWEEN</span> <span class="t-n">2014</span> <span class="t-k">AND</span> <span class="t-n">2017</span>
+  <span class="t-k">AND</span> owner_label <span class="t-k">IN</span> (<span class="t-s">&#x27;1st owner&#x27;</span>, <span class="t-s">&#x27;2nd owner&#x27;</span>)
+<span class="t-k">GROUP BY</span> owner_label
+<span class="t-k">ORDER BY</span> owner_label;</code></pre>
+<div class="tbl"><table><thead><tr><th>owner_label</th><th class=num>listings</th><th>avg_retention</th></tr></thead><tbody><tr><td>1st owner</td><td class=num>274</td><td>0.68</td></tr><tr><td>2nd owner</td><td class=num>39</td><td>0.62</td></tr></tbody></table></div>
+</details><details>
+<summary><span class="qid">Q4</span><span class="qtitle">How does mileage relate to price?</span><span class="qtag">CASE, GROUP BY</span></summary>
+<pre><code><span class="t-k">SELECT</span>
+    <span class="t-k">CASE</span>
+        <span class="t-k">WHEN</span> km_driven &lt; <span class="t-n">10000</span> <span class="t-k">THEN</span> <span class="t-s">&#x27;1. under 10k km&#x27;</span>
+        <span class="t-k">WHEN</span> km_driven &lt; <span class="t-n">25000</span> <span class="t-k">THEN</span> <span class="t-s">&#x27;2. 10k-25k km&#x27;</span>
+        <span class="t-k">WHEN</span> km_driven &lt; <span class="t-n">50000</span> <span class="t-k">THEN</span> <span class="t-s">&#x27;3. 25k-50k km&#x27;</span>
+        <span class="t-k">ELSE</span>                        <span class="t-s">&#x27;4. 50k+ km&#x27;</span>
+    <span class="t-k">END</span>                                               <span class="t-k">AS</span> mileage,
+    <span class="t-f">COUNT</span>(*)                                          <span class="t-k">AS</span> listings,
+    <span class="t-f">ROUND</span>(<span class="t-f">AVG</span>(selling_price))                         <span class="t-k">AS</span> avg_price_inr
+<span class="t-k">FROM</span> listings
+<span class="t-k">GROUP BY</span> mileage
+<span class="t-k">ORDER BY</span> mileage;</code></pre>
+<div class="tbl"><table><thead><tr><th>mileage</th><th class=num>listings</th><th class=num>avg_price_inr</th></tr></thead><tbody><tr><td>1. under 10k km</td><td class=num>187</td><td class=num>107,708</td></tr><tr><td>2. 10k-25k km</td><td class=num>328</td><td class=num>66,263</td></tr><tr><td>3. 25k-50k km</td><td class=num>339</td><td class=num>44,628</td></tr><tr><td>4. 50k+ km</td><td class=num>207</td><td class=num>30,297</td></tr></tbody></table></div>
+</details><details>
+<summary><span class="qid">Q5</span><span class="qtitle">Which models are listed most often?</span><span class="qtag">GROUP BY, ORDER BY, LIMIT</span></summary>
+<pre><code><span class="t-k">SELECT</span>
+    model,
+    <span class="t-f">COUNT</span>(*)                                          <span class="t-k">AS</span> listings,
+    <span class="t-f">ROUND</span>(<span class="t-f">AVG</span>(selling_price))                         <span class="t-k">AS</span> avg_price_inr,
+    <span class="t-f">ROUND</span>(<span class="t-f">AVG</span>(km_driven))                             <span class="t-k">AS</span> avg_km
+<span class="t-k">FROM</span> listings
+<span class="t-k">GROUP BY</span> model
+<span class="t-k">ORDER BY</span> listings <span class="t-k">DESC</span>
+<span class="t-k">LIMIT</span> <span class="t-n">8</span>;</code></pre>
+<div class="tbl"><table><thead><tr><th>model</th><th class=num>listings</th><th class=num>avg_price_inr</th><th class=num>avg_km</th></tr></thead><tbody><tr><td>Bajaj Pulsar 150</td><td class=num>41</td><td class=num>38,915</td><td class=num>38,804</td></tr><tr><td>Royal Enfield Classic 350</td><td class=num>27</td><td class=num>130,481</td><td class=num>17,212</td></tr><tr><td>Honda Activa [2000-2015]</td><td class=num>23</td><td class=num>24,830</td><td class=num>88,436</td></tr><tr><td>Honda CB Hornet 160R</td><td class=num>22</td><td class=num>68,740</td><td class=num>35,441</td></tr><tr><td>Bajaj Pulsar 180</td><td class=num>20</td><td class=num>40,700</td><td class=num>38,701</td></tr><tr><td>Royal Enfield Thunderbird 350</td><td class=num>19</td><td class=num>102,626</td><td class=num>19,507</td></tr><tr><td>Hero Honda Splendor Plus</td><td class=num>17</td><td class=num>19,153</td><td class=num>57,439</td></tr><tr><td>Bajaj Discover 125</td><td class=num>16</td><td class=num>27,188</td><td class=num>45,647</td></tr></tbody></table></div>
+</details>
+
+    <h3 class="small">Data source</h3>
+    <p class="source">“Motorcycle Dataset” by Nehal Birla on Kaggle: <a href="https://www.kaggle.com/datasets/nehalbirla/motorcycle-dataset" target="_blank" rel="noopener">kaggle.com/datasets/nehalbirla/motorcycle-dataset</a>. I used the <code>BIKE DETAILS.csv</code> file (1,061 listings, prices in Indian rupees).</p>
+
+    <h3 class="small">Limitations</h3>
+    <ul class="limits">
+      <li>Prices are asking prices, not final sale prices.</li>
+      <li>The new price is the model’s current price, not what the first owner paid, so older bikes are approximate.</li>
+      <li>Some groups are small (TVS has 10 bikes; there are 39 second-owner bikes in the owner comparison).</li>
+    </ul>
+  </section>
+
+  <section id="resume">
+    <h2>Resume</h2>
+
+    <h3 class="group">Experience</h3>
+    <div class="item"><div class="date">2026 – Present</div><div>
+      <h3>Specialist</h3><div class="org">Apple · Boulder, CO</div>
+      <ul><li>Advanced from a retail sales role to Specialist after two rounds of interviews (individual and group).</li>
+      <li>Guide customers through product selection and setup, translating technical details into clear recommendations.</li>
+      <li>Represent Apple’s brand standards in a high-volume, customer-facing store.</li></ul></div></div>
+    <div class="item"><div class="date">Aug 2022 – Oct 2022</div><div>
+      <h3>UX Intern</h3><div class="org">IBM · Remote</div>
+      <ul><li>Designed and developed a responsive website for IBM with a fellow intern, using user research and feedback to improve functionality and user experience.</li>
+      <li>Built the interface with HTML, CSS, and UX design principles, aligned with IBM’s branding and business goals.</li></ul></div></div>
+    <div class="item"><div class="date">2022 – 2026</div><div>
+      <h3>Sales Associate</h3><div class="org">Home Depot · Firestone, CO</div>
+      <ul><li>Resolved customer concerns calmly during busy periods and worked with the team to improve service across departments.</li></ul></div></div>
+    <div class="item"><div class="date">Jun 2021 – Aug 2021</div><div>
+      <h3>P-TECH Intern, Watson Cloud Unit</h3><div class="org">IBM · Remote</div>
+      <ul><li>Worked with interns nationwide to research IBM Watson Cloud and develop a proposal addressing bot-driven fraud on retail websites.</li></ul></div></div>
+
+    <h3 class="group">Other projects</h3>
+    <div class="item"><div class="date">CU Boulder</div><div>
+      <h3>AI &amp; Critical Thinking Research</h3>
+      <ul><li>Designed surveys and conducted interviews on how AI tool use affects undergraduate critical thinking.</li>
+      <li>Analyzed 10,000+ UK undergraduate survey responses alongside primary data to identify patterns linked to AI dependency.</li></ul></div></div>
+    <div class="item"><div class="date"><a href="https://github.com/phanhuy18/Moto-market" target="_blank" rel="noopener">GitHub</a></div><div>
+      <h3>Moto Market</h3>
+      <ul><li>Full-stack motorcycle market app using FastAPI and PostgreSQL, with Streamlit and Plotly dashboards.</li>
+      <li>Integrated the eBay Browse API with OAuth2 to pull live listings.</li>
+      <li>Fixed a committed-credentials issue using <code>git filter-branch</code>.</li></ul></div></div>
+
+    <h3 class="group">Education</h3>
+    <div class="item"><div class="date">Expected 2027</div><div>
+      <h3>University of Colorado Boulder</h3><p>B.S., Information Science · Minor, Leeds School of Business</p></div></div>
+    <div class="item"><div class="date">May 2022</div><div>
+      <h3>Front Range Community College</h3><p>A.A.S., Computer Science · Certificate in Business Specialization (dual enrollment with Skyline High School)</p></div></div>
+
+    <h3 class="group">Skills</h3>
+    <div class="skills">
+      <div><b>Technical</b><p>Python, SQL, PostgreSQL, FastAPI, R, Tableau, HTML/CSS, Git</p></div>
+      <div><b>Interests</b><p>Data analysis, UX research, backend development</p></div>
+      <div><b>Languages</b><p>English, Vietnamese</p></div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Contact</h2>
+    <p>The best way to reach me is by email. I’m also on LinkedIn and GitHub.</p>
+    <div class="contact-row">
+      <span class="email" id="email">phan.huy@outlook.com</span>
+      <button class="btn" id="copy" type="button">Copy email</button>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </section>
+
+  <footer><span>© 2026 Huy Phan</span><span>Boulder, CO</span></footer>
+</div>
+
+<script>
+document.getElementById('copy').addEventListener('click', function(){
+  var el = document.getElementById('email'), toast = document.getElementById('toast');
+  function fallback(){ var r=document.createRange(); r.selectNodeContents(el); var s=window.getSelection(); s.removeAllRanges(); s.addRange(r); toast.textContent='Email selected. Press Ctrl/Cmd+C to copy.'; }
+  try{ navigator.clipboard.writeText(el.textContent.trim()).then(function(){ toast.textContent='Email copied.'; }, fallback); }catch(e){ fallback(); }
+});
+</script>
+
+</body>
+</html>
